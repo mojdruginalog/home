@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		  // Write a function to convert array of strings to array of numbers. Filter out all non number values.
+		  // ["1", "21", undefined, "42", "1e+3", Infinity] -> [1, 21, 42, 1000]
+		  function convertString(arrayString){
+		  	var numberArray = [];
+		  	var counter = 0;
+		  	for (var i = 0; i < arrayString.length; i++) {
+		  		var stringArray = arrayString[i];
+		  		var resultArray = parseFloat(stringArray);
+		  		if (!isNaN(resultArray) && isFinite(resultArray)) {
+		  			numberArray[i-counter] = resultArray;
+		  		}else{
+		  			counter++;
+		  		}
+		  	}
+		  	return numberArray;
+		  }
+		  document.write(convertString(["1", "21", undefined, "42", "1e+3", Infinity]));
+
+	</script>
+</body>
+</html>

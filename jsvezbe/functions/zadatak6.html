@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		// Write a function to find position of first occurrence of character in a string. Result should be in human numeration form. If there are no occurrences of character function should return -1.
+		
+		function firstOccurence(input,n){
+			
+			for (var i = 0; i < input.length; i++) {
+				var first = input[i];
+				if (first === n) {
+					 return (function(){
+						var output = '';
+						if (((i+1)%100) >=11 && (((i+1)%100) <=13)) {
+							output = (i+1)+'th';
+						}else if ((i+1)%10 === 1) {
+							output = (i+1)+'st';
+						}else if ((i+1)%10 === 2) {
+							output = (i+1)+'nd';
+						}else if ((i+1)%10 === 3) {
+							output = (i+1)+'rd';
+						}else{
+							output = (i+1)+'th';
+						}
+					return output;
+					})();
+				}
+			}
+			return -1;
+		}
+		document.write(firstOccurence('moj drugi string','r'));
+
+	</script>
+</body>
+</html>

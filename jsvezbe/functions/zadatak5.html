@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+				
+		// Write a function to count number of letter occurrences in a string.
+		// "My random string", "n" -> 2
+		function countOccurences(input,n){
+			var output;
+			var counter = 0;
+			for (var i = 0; i < input.length; i++) {
+				output = input[i];
+				if (output === n) {
+					 counter++;
+				}
+			}
+			return counter;
+		}
+		document.write(countOccurences('moj drugi string','r'));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		
+	// Write a function to get first n number of characters and add “...” at the end of newly created string.
+	function firstN(input,n){
+		var output = '';
+		var result = '';
+		for (var i = 0; i < n; i++) {
+			result += input[i];
+			output = result+'...';
+		}
+		return output;
+	}
+	document.write(firstN('mojstring',5));
+
+
+	</script>
+</body>
+</html>

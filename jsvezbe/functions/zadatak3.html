@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		// Write a function to concatenates a given string n times (default is 1).
+		// 	"Ha" -> "Ha"
+		// "Ha", 3 -> "HaHaHa"
+		function concatenate(input,n=1){
+			var output = '';
+			for (var i = 0; i < n; i++) {
+				output +=input;
+				
+			}
+			return output;
+		}
+		document.write(concatenate('moj',5));
+
+	</script>
+</body>
+</html>

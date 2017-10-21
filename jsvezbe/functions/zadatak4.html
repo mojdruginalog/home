@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		// Write a function to humanized number (Formats a number to a human-readable string.) with the correct suffix such as 1st, 2nd, 3rd or 4th.
+		// 	1 -> 1st
+		// 	11 -> 11th
+
+		// 	Hint: num % 100 >= 11 && num % 100 <= 13
+		function humanize(num){
+			var output;
+			if (num % 100 >= 11 && num % 100 <= 13) {
+				output = num + 'th';
+			}else if (num % 10 === 1) {
+				output = num + 'st';
+			}else if (num % 10 === 2) {
+				output = num + 'nd';
+			}else if (num % 10 === 3) {
+				output = num + 'rd';
+			}else {
+				output = num + 'th';
+			}
+			return output;
+		}
+		document.write(humanize(4));
+
+	</script>
+</body>
+</html>

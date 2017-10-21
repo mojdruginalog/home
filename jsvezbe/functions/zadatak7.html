@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		// Write a function to find position of last occurrence of character in a string. Result should be in human numeration form. If there are no occurrences of character function should return -1.
+		function lastOccurence(input,n){
+			var last = input.length-1;
+			for (var i = last; i>=0; i--) {
+				var current = input[i];
+				if (current === n) {
+					return (function(){
+						var output = '';
+						if (i%100 >=11 && i%100 <=13) {
+							output = i+'th';
+						}else if (i%10 === 1) {
+							output = i+'st';
+						}else if (i%10 === 2) {
+							output = i+'st';
+						}else if (i%10 === 3) {
+							output = i+'st';
+						}else{
+							output = i+'th';
+						}
+						return output;
+					})();
+				}
+			}
+			return -1;
+		}
+		document.write(lastOccurence('moj drug string','r'))
+
+	</script>
+</body>
+</html>

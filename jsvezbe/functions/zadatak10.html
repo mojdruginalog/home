@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		// Write a function which replaces spaces in a string with provided separator. If separator is not provided use “-” (dash) as default separator.
+
+		//     "My random string", "_" -> "My_random_string"
+		//     "My random string", "+" -> "My+random+string"
+		//     "My random string" -> "My-random-string"
+		function replace(input,sign = '-'){
+			var output = '';
+			for (var i = 0; i < input.length; i++) {
+				var element = input[i];
+				if (element === ' ') {
+					output +=sign;
+				}else{
+					output +=element;
+				}
+			}
+			return output;
+		}
+		document.write(replace('moj drugi string' ));
+
+	</script>
+</body>
+</html>

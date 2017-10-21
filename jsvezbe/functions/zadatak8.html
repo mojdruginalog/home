@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funkcije 1</title>
+</head>
+<body>
+	<script>
+		// Write a function to convert string into an array. Space in a string should be represented as “null” in new array.
+		// "My random string" -> ["M", "y", null, "r", "a"]
+		// "Random" -> ["R", "a", "n", "d", "o", "m"]
+		function convertArray(string){
+			var arrayString = [];
+			for (var i = 0; i < string.length; i++) {
+				arrayString[i] = string[i];
+				if (arrayString[i] === ' ') {
+					arrayString[i] =  'null';
+				}
+			}
+			return  arrayString;
+		}
+		document.write(convertArray('moj string'));
+	</script>
+</body>
+</html>
