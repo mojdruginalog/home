@@ -10,6 +10,31 @@
 
 		// "My random string", "JS " -> "JS My random string"
 		// "My random string", "JS ", 10 -> "My random JS string"
+		function insertString(input,word,n){
+			n = n || 1;
+			var newString = (function(){
+				var output = '';
+				var stringBegining = (function(){
+					var output = '';
+					for (var i = 0; i < n-1; i++) {
+						output += input[i];
+					}
+					return output;
+				})();
+				var stringEnding = (function(){
+					var output = '';
+					for (var i = n-1; i < input.length; i++) {
+						output += input[i];
+					}
+					return output;
+				})();
+				output += stringBegining + word + stringEnding;
+				return output;
+			})();
+			return newString;
+		}
+		document.write(insertString('moj novi string','js ',10));
+
 	</script>
 </body>
 </html>

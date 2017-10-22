@@ -11,6 +11,28 @@
 
 		// 'The quick brown fox', 'fox' -> "'fox' was found 1 times"
 		// 'aa, bb, cc, dd, aa', 'aa' -> "'aa' was found 2 times"
+
+		function findWord(string,word){
+			var counter = 1;
+			var wordcounter = 0;
+			var output = '';
+			for (var i = 0; i < string.length; i++) {
+				if (string[i] === word[0]) {
+					for (var j = 0; j < word.length; j++) {
+						if (string[i+counter] === word[j]) {
+							counter++;
+						}
+					}
+				}
+				if (counter === word.length) {
+					wordcounter++;
+					counter = 1;
+				}
+			}
+			output = word + " was found " + wordcounter + " times.";
+		    return output;
+		}
+		document.write(findWord('The quick brown fox','fox'));
 	</script>
 </body>
 </html>

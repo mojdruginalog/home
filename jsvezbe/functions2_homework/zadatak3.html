@@ -10,6 +10,21 @@
 		// Write a program to filter out falsy values from the array.
 
 		// [NaN, 0, 15, false, -22, '', undefined, 47, null] -> [15, -22, 47]
+		function filter(array){
+			var niz = [];
+			var counter = 0;
+			for (var i = 0; i < array.length; i++) {
+				var element = array[i];
+				var resultArray = parseInt(element);
+				if (!isNaN(resultArray) && resultArray !== 'undefined') {
+					niz[i-counter] = resultArray;
+				}else{
+					counter++;
+				}
+			}
+			return niz;
+		}
+		document.write(filter([NaN, 0, 15, false, -22, '', undefined, 47, null]));
 		
 	</script>
 </body>

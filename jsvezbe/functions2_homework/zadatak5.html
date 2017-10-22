@@ -10,6 +10,20 @@
 
 		// [7, 9, 0, -2] -> -2
 		// [7, 9, 0, -2], 2 -> [0, -2] 
+
+		function lastElement(array,parameter){
+			//var lastIndex = array.length-1;
+			var counter = 0;
+			var niz = [];
+			parameter = parameter || 1;
+			for (var i = 0; i < parameter; i++) {
+				niz[i] = array[array.length - parameter+i];
+
+			}
+			return niz;
+
+		}
+		document.write(lastElement([7, 9, 0, -2],3));
 	</script>
 </body>
 </html>

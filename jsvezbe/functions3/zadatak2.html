@@ -10,6 +10,28 @@
 
 		// [a,b,c], [1,2,3] -> [a,1,b,2,c,3]
 
+		function combine(array1,array2){
+			var niz1 = [];
+			var niz2 = [];
+			var niz3 = [];
+			var result = [];
+
+			var counter = 1;
+			for (var i = 0; i < array1.length; i++) {
+				for (var j = 0; j < array2.length; j++) {
+					niz1 = array1[i-2]+array2[j-2];
+					niz2 = array1[i-1]+array2[j-1];
+					niz3 = array1[i]+array2[j];
+					result = niz1+niz2+niz3;
+				}
+		
+			}
+				
+
+				
+			return result;
+		}
+		document.write(combine(['a','b','c'], [1,2,3]));
 	</script>
 </body>
 </html>

@@ -7,6 +7,17 @@
 <body>
 	<script>
 		// Write a function that takes a number and returns array of its digits.
+		function returnArray(number){
+			var niz = [];
+			var result = number.toString();
+			for (var i = 0; i < result.length; i++) {
+				  niz[i] = result[i];
+			}
+		return niz;
+			
+	
+		}
+		document.write(returnArray(123456789));
 	</script>
 </body>
 </html>

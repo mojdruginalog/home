@@ -10,6 +10,23 @@
 		// Write a function to hide email address.
 
 		// "myemailaddress@bgit.rs" -> "myemail...@bgit.rs"
+
+		function hideEmail(email){
+			var output = '';
+			var extension = '';
+			for (var i = 0; i < email.length; i++) {
+				var element = email[i];
+				if (element === '@') {
+					for (var j = i+1; j < email.length; j++) {
+						extension += email[j];
+					}
+				}
+			}
+			output = 'myemail...@'+extension;
+			return output;
+
+		}
+		document.write(hideEmail('martinovn1975@gmail.com'));
 	</script>
 </body>
 </html>

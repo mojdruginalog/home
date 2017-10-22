@@ -9,6 +9,19 @@
 		// Write a function that reverses a number. Result must be of type number.
 
 		// 12345 -> 54321 // Output must be of type number
+		function reverseNumber(number){
+			number = number +'';
+			var output = '';
+			var lastIndex = number.length-1;
+			for (var i = 0; i < number.length; i++) {
+				var element = number[lastIndex-i];
+				output += element;
+				var reversedNumber = parseFloat(output);
+			}
+			return reversedNumber;
+		}
+		document.write(reverseNumber(15683));
+
 	</script>
 </body>
 </html>

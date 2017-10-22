@@ -7,6 +7,21 @@
 <body>
 	<script>
 		// Write a function to count vowels in provided string.
+		function countWovels(string){
+			var vowels = 'aeiouAEIOU';
+			var counter = 0;
+			var output = '';
+			for (var i = 0; i < string.length; i++) {
+				for (var j = 0; j < vowels.length; j++) {
+					if (string[i] === vowels[j]) {
+						counter++;
+					}
+				}
+			}
+			output = 'There are '+ counter +' vovels in the string';
+			return output;
+		}
+		document.write(countWovels('akademija'));
 	</script>
 </body>
 </html>

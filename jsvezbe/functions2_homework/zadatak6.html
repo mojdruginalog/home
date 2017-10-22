@@ -11,6 +11,17 @@
 		// 6, 0 -> [0, 0, 0, 0, 0, 0]
 		// 2, "none" -> ["none", "none"]
 		// 2 -> [null, null] 
+
+		function specified(input,number){
+			var niz = [];
+			number = ''+number || null;
+			var counter = 0;
+			for (var i = 0; i < input; i++) {
+				niz[i] = number;
+			}
+			return niz;
+		}
+		document.write(specified(3,'none'));
 	</script>
 </body>
 </html>

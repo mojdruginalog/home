@@ -10,6 +10,26 @@
 
 		// [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]
 
+		function mostFrequent(array){
+			var mostFrequent = 1;
+			var niz;
+			var counter = 0;
+			for (var i = 0; i < array.length; i++) {
+				for (var j = 0; j < array.length; j++) {
+					if (array[i] === array[j]) {
+						counter++;
+					}
+					if (mostFrequent<counter) {
+						mostFrequent = counter;
+						niz = array[i];
+					}
+				}
+				counter = 0;
+			}
+			return niz + '('+mostFrequent+' times)';
+		}
+		document.write(mostFrequent([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]));
+
 	</script>
 </body>
 </html>
