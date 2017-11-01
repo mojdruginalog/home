@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Festival oop</title>
+</head>
+<body>
+	<h1>Festival Practice</h1>
+	<script>
+		'use strict';
+		(function(){
+			// var action = new Genre('Action');
+			// document.write(action.getData());
+
+			 // var conan = new Movie('Conan','action',180);
+			 // var blade = new Movie('Blade','action',120);
+			 // var rambo = new Movie('Rambo','action',160);
+			 // var jaw = new Movie('Jaw','horor',140);
+			// var conan = movie.getData();
+			// document.write(conan);
+			
+
+			// var program1 = new Program(new Date("Oct 24, 2017"));
+			// program1.addMovie(conan);
+			// program1.addMovie(blade);
+			// program1.addMovie(rambo);
+			// var p1 = program1.getData();
+			// //document.write(p1);
+
+			// var program2 = new Program(new Date("Oct 27, 2017"));
+			// program2.addMovie(jaw);
+			// var p2 = program2.getData();
+			// //document.write(p2);
+
+			// var festival = new Festival('Weekend festival');
+			// festival.addProgram(program1);
+			// festival.addProgram(program2);
+			// var f = festival.getData();
+			// document.write(f);
+
+			//Function for creating movie objects
+			function createMovie(title,genre,length){
+				var movie = new Movie(title,genre,length);
+				return movie;
+			}
+			//Creating movie objects
+			 var conan = createMovie('Conan','action',180);
+			 var blade = createMovie('Blade','action',120);
+			 var rambo = createMovie('Rambo','action',160);
+			 var jaw   = createMovie('Jaw','horor',140);
+
+			 //Function for creating program objects
+			 function createProgram(dateString){
+			 	var date = new Date(dateString);
+			 	var program = new Program(date);	
+			 	return program;
+			 }
+			 //Creating program objects
+			 var actionProgram = createProgram("Oct 28 2017");
+			 var hororProgram = createProgram("Oct 29 2017");
+
+			 //Adding action movies to actionProgram
+			 actionProgram.addMovie(conan);
+			 actionProgram.addMovie(blade);
+			 actionProgram.addMovie(rambo);
+			 //Adding horor moview to hororProgram
+			 hororProgram.addMovie(jaw);
+
+			 //Creating new instance of festival
+			 var festival = new Festival('Weekend festival',4);
+			 //Adding programs to festival
+			 festival.addProgram(actionProgram);
+			 festival.addProgram(hororProgram);
+
+			 //output festival data
+			 document.write(festival.getData());
+
+		})();
+
+		function Genre(gName){
+			this.gName = gName;
+			this.getData = function(){
+				var stringed = this.gName[0] + this.gName[this.gName.length - 1];
+		        var result = stringed.toUpperCase();
+				//output = '"' + this.gName + '" -> ' + result;
+				return result;
+			};
+		}
+
+		function Movie(title,genre,length){
+			this.title = title;
+			this.genre = new Genre(genre);
+			this.length = length;
+			this.getData = function(){
+				var output = this.title + ", " + this.length + "min, " + this.genre.getData();
+				return output;
+			};
+			if (typeof this.length !== 'number') {
+				throw {
+					name:'inputError',
+					message:'Length input must be a number!'
+				}
+			}
+		}
+
+		function Program(date){
+			this.date = date;
+			this.listOfMovies = [];
+			this.totalNumberOfMovies = 0;
+			this.getData = function(){
+				var output = '';
+				var programLength = 0;
+				for (var i = 0; i < this.listOfMovies.length; i++) {
+					var movie = this.listOfMovies[i];
+					programLength += movie.length;
+					output += "\t\t" + movie.getData() + "\n";
+				}
+				var dateString = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+				var result = dateString + ", Length of all movies " + programLength + "\n" + output;
+				return result;
+ 			};
+ 			this.addMovie = function(movie){
+ 				var counter = 0;
+ 				var counter2 = movie.length;
+ 				for (var i = 0; i < this.listOfMovies.length; i++) {
+ 					var element = this.listOfMovies[i];
+ 					counter2 += element.length;
+ 					if (element.genre.gName === movie.genre.name) {
+ 						counter++;
+ 					}
+ 				}
+ 				if (counter > 3) {
+ 					throw {
+ 						name: 'GenreError',
+ 						message:'There cannot be more than 4 movies of the same genre.'
+ 					}
+ 				}else if (counter2 > 480) {
+ 					throw {
+ 						name:'LengthError',
+ 						message:'Length of all movies in the list cannot be over 8 hours.'
+ 					}
+
+ 				}else{
+ 					this.listOfMovies.push(movie);
+	 				this.totalNumberOfMovies++;
+ 				}
+ 				
+ 			}
+		}
+
+		function Festival(name,maxNoOfMovies){
+			this.name = name;
+			this.maxNoOfMovies = maxNoOfMovies;
+			this.listOfPrograms = [];
+			this.numberOfMoviesInAllPrograms = 0;
+			this.getData = function(){
+				var output = '';
+				var result;
+				if (this.listOfPrograms.length === 0) {
+					result = "Weekend festival" + "\n\t" + "Program to be announced";
+				}else{
+					for (var i = 0; i < this.listOfPrograms.length; i++) {
+					var program = this.listOfPrograms[i];
+					output += "\t" + program.getData() + "\n";
+				}
+				result  = this.name + ", Total number of movies: " + this.numberOfMoviesInAllPrograms + "\n" + output;
+				
+				}
+				return result;
+			    
+			};
+			// this.getMoviesCount = function () {
+			//     var programs = this.listOfPrograms;
+			//     var moviesCount = 0;
+
+			//     for (var i = 0; i < programs.length; i++) {
+			//         var program = programs[i];
+			//         moviesCount += program.listOfMovies.length;
+			//     }
+
+			//     return moviesCount;
+			// };
+			this.addProgram = function(program){
+
+				if (program.totalNumberOfMovies + this.numberOfMoviesInAllPrograms > this.maxNoOfMovies) {
+					throw {
+						name:'MaxNoError',
+						message:'Maximum number of movies exceeded!'
+					}
+				}else{
+					this.listOfPrograms.push(program);
+					this.numberOfMoviesInAllPrograms += program.totalNumberOfMovies;	
+				}
+				
+			}
+			 if (typeof maxNoOfMovies !== "number") {
+			 	
+			        throw {
+			            name: "InputTypeError",
+			            message: "Max number of movies input must be a number!"
+			        }
+			    }
+		}
+	</script>  
+</body>
+</html>
