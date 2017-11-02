@@ -51,19 +51,26 @@ var UIController = (function(){
 			addGrade: addGradeElement.value
 
 		}
-		return result;
-	}
+        return result;
+        
+    }
+    
+    function getLog(inputString){
+        return console.log(inputString);
+    }
 
 	function displayStudent(student){
-		if (addGrade=5) {
+        var gradeValue = collectInput().addGrade
+        if (gradeValue=5) {
 			var grade = document.querySelector(DOMStrings.divFailed);
 			var htmlItem = "<li>" + student.getInfo(); + "</li>"
 			grade.insertAdjacentHTML('beforeend', htmlItem);
-		}else if (addGrade>5) {
+		}else if (gradeValue>5) {
 			var grade = document.querySelector(DOMStrings.divPassed);
 			var htmlItem = "<li>" + student.getInfo(); + "</li>"
 			grade.insertAdjacentHTML('beforeend', htmlItem);
-		}
+        }
+        return grade;
 	}
 
 	function getDOMStrings(){
@@ -73,7 +80,8 @@ var UIController = (function(){
 	return {
 		getInput: collectInput,
 		getDOMStrings: getDOMStrings,
-		displayStudent: displayStudent
+        displayStudent: displayStudent,
+        consoleLog:getLog
 	}
 })();
 
@@ -93,7 +101,9 @@ var mainController = (function(dataCtrl,UICtrl){
 		var input = UICtrl.getInput();
 
 		//add student to list
-		var student = dataCtrl.addStudent(input.option,input.addStudent,input.addGrade);
+        var student = dataCtrl.addStudent(input.option,input.addStudent,input.addGrade);
+        
+        UICtrl.displayStudent(student);
 	}
 
 
@@ -102,6 +112,7 @@ var mainController = (function(dataCtrl,UICtrl){
         init: function () {
             console.log("App has started");
             setupEventListeners();
+            
         }
     }
 })(dataController,UIController);
